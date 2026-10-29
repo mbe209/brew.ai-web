@@ -1,0 +1,24 @@
+name: Brew.ai benachrichtigen
+
+# Meldet jeden Push auf main an das Hauptrepo Brew.ai,
+# damit dort das Submodule web/ auf den neuen Stand gezogen wird.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: repository_dispatch an mbe209/brew.ai senden
+        env:
+          GH_TOKEN: ${{ secrets.BREW_SYNC_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::Secret BREW_SYNC_TOKEN fehlt, Sync wird übersprungen."
+            exit 0
+          fi
+          gh api repos/mbe209/brew.ai/dispatches \
+            -f event_type=web-updated \
+            -f "client_payload[sha]=${{ github.sha }}"
