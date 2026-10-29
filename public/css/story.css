@@ -1,9 +1,13 @@
-/* Scrollytelling: Kapitel mit eigener Hintergrundfarbe, Parallax-Ebenen und Sticky-Szenen.
-   Die Farbe liegt auf .st-backdrop (fixiert) und wechselt per JS (public/js/story.js). */
+/* Scrollytelling: Schwarz-Blau-Verlauf als feste Bühne, jedes Kapitel färbt nur ein weiches Licht darauf.
+   Parallax-Ebenen und Sticky-Szenen steuert public/js/story.js. */
+@property --glow { syntax: "<color>"; inherits: true; initial-value: #2E86DE; }
 .st-backdrop {
   position: fixed; inset: 0; z-index: -1;
-  background: var(--story-bg, var(--color-deep-blue));
-  transition: background-color .8s ease;
+  --glow: var(--story-glow, #2E86DE);
+  background:
+    radial-gradient(70% 55% at 78% 30%, color-mix(in srgb, var(--glow) 26%, transparent), transparent 70%),
+    linear-gradient(180deg, #03050A 0%, #071226 45%, #0B2545 100%);
+  transition: --glow 1s ease;
 }
 .st { position: relative; color: var(--st-fg, var(--color-foam)); }
 .st h1, .st h2 { font-family: var(--font-head); line-height: 1.04; letter-spacing: -.025em; margin: 0; text-wrap: balance; max-width: none; }
@@ -61,7 +65,7 @@
 .st-hop .br { transition: fill .35s, stroke .35s; }
 .st-recipe-grid h2 { font-size: clamp(2rem, 4.6vw, 3.8rem); margin-top: .8rem; }
 .st-recipe { margin: 1.6rem 0 0; display: grid; gap: .45rem; font: 500 .95rem/1.4 var(--font-mono); }
-.st-recipe div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: .55rem 0; border-bottom: 1px dashed rgba(250,247,240,.25); opacity: .18; transform: translateX(14px); transition: opacity .4s, transform .4s; }
+.st-recipe div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: .55rem 0; opacity: .18; transform: translateX(14px); transition: opacity .4s, transform .4s; }
 .st-recipe div.in { opacity: 1; transform: none; }
 .st-recipe dt { color: var(--color-lime); }
 .st-recipe dd { margin: 0; }
@@ -73,16 +77,14 @@
   .st-recipe { font-size: .82rem; } .st-recipe div { grid-template-columns: 5.5rem 1fr; padding: .3rem 0; }
 }
 
-/* 4 Sudhaus */
-.st-brewery { padding-block: 22vh 26vh; overflow: hidden; }
-.st-brewery h2 { font-size: clamp(2.2rem, 6vw, 4.8rem); max-width: 14ch; margin-top: .8rem; }
-.st-brewery .st-sub { margin-top: 1.4rem; max-width: 32rem; font-size: 1.1rem; opacity: .85; }
-.st-tanks { position: relative; height: 380px; margin-top: 4rem; }
-.st-tank { position: absolute; bottom: 0; width: 120px; border-radius: 60px 60px 18px 18px; background: linear-gradient(90deg, #8E9BA9, #C9D2DC 35%, #F4F6F8 50%, #C9D2DC 65%, #8E9BA9); will-change: transform; }
-.st-tank::after { content: ""; position: absolute; left: 50%; top: 32%; width: 22px; height: 22px; margin-left: -11px; border-radius: 50%; background: var(--color-charcoal); box-shadow: 0 0 0 5px rgba(30,30,36,.25), inset 0 0 0 6px var(--color-lime); }
-.st-vine { position: absolute; left: 0; right: 0; top: 10px; width: 100%; height: 80px; }
-.st-stamp { position: absolute; right: 4%; top: 18%; transform: rotate(-8deg); font: 700 .85rem var(--font-mono); text-transform: uppercase; letter-spacing: .12em; border: 3px solid var(--color-lime); color: var(--color-lime); padding: .6rem .9rem; border-radius: 8px; }
-@media (max-width: 820px) { .st-tank { width: 24%; } .st-stamp { top: auto; bottom: 62%; } }
+/* 4 Sudhaus: ein Tank, eine Ranke */
+.st-brewery { padding-block: 18vh; overflow: hidden; }
+.st-brew-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.st-brewery h2 { font-size: clamp(2.2rem, 5.4vw, 4.4rem); max-width: 13ch; margin-top: .8rem; }
+.st-brewery .st-sub { margin-top: 1.4rem; max-width: 30rem; font-size: 1.1rem; opacity: .85; }
+.st-tank { width: min(100%, 380px); justify-self: center; overflow: visible; will-change: transform; }
+.st-vinehops svg { transition: opacity .5s, transform .5s; transform-box: fill-box; transform-origin: center; }
+@media (max-width: 820px) { .st-brew-grid { grid-template-columns: 1fr; } .st-tank { width: 240px; } }
 
 /* 5 Glas = Ziele */
 .st-goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
@@ -90,12 +92,12 @@
 .st-goals-grid .st-sub { margin-top: 1rem; opacity: .8; max-width: 30rem; }
 .st-glass { width: min(100%, 340px); justify-self: center; overflow: visible; }
 .st-miles { margin: 1.8rem 0 0; display: grid; gap: .8rem; list-style: none; padding: 0; }
-.st-miles li { display: grid; grid-template-columns: auto 1fr; gap: .2rem 1rem; padding: 1rem 1.1rem; border-radius: 16px; border: 2px solid rgba(11,37,69,.15); transition: .4s; }
+.st-miles li { display: grid; grid-template-columns: auto 1fr; gap: .2rem 1rem; padding: 1rem 1.1rem; border-radius: 16px; border: 1px solid rgba(250,247,240,.18); transition: .4s; }
 .st-miles b { font: 700 1.5rem var(--font-head); grid-row: span 2; min-width: 6.2rem; font-variant-numeric: tabular-nums; }
 .st-miles span { font-weight: 600; }
 .st-miles small { opacity: .75; }
-.st-miles li.on { background: var(--color-deep-blue); color: var(--color-foam); border-color: var(--color-deep-blue); }
-.st-miles li.on b { color: var(--color-amber); }
+.st-miles li.on { background: var(--color-foam); color: var(--color-deep-blue); border-color: var(--color-foam); }
+.st-miles li.on b { color: var(--color-malt-orange); }
 .st-raised { margin-top: 1rem !important; font: 500 .85rem var(--font-mono); }
 @media (max-width: 820px) {
   .st-goals-grid { grid-template-columns: 1fr; gap: .8rem; }
@@ -110,7 +112,7 @@
 .st-beers h2 { font-size: clamp(2rem, 4.6vw, 3.8rem); margin-top: .8rem; }
 .st-track { display: flex; gap: 2rem; padding-left: max(16px, calc((100vw - 1240px) / 2 + 16px)); padding-right: 30vw; margin-top: 10vh; will-change: transform; }
 .st-beer { flex: 0 0 min(290px, 70vw); display: grid; gap: .3rem; }
-.st-can { aspect-ratio: 3 / 4.6; border-radius: 26px 26px 20px 20px; position: relative; overflow: hidden; background: var(--color-foam); border: 4px solid var(--color-deep-blue); box-shadow: 14px 14px 0 rgba(11,37,69,.12); }
+.st-can { aspect-ratio: 3 / 4.6; border-radius: 26px 26px 20px 20px; position: relative; overflow: hidden; background: var(--color-foam); box-shadow: 0 24px 50px rgba(0,0,0,.45); }
 .st-can .st-art { position: absolute; inset: 0 0 42%; background: var(--c); display: grid; place-items: center; }
 .st-can .st-art svg { width: 42%; height: auto; position: static; }
 .st-can .st-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -118,7 +120,7 @@
 .st-can .st-label strong { font: 800 italic 1.6rem/1.05 var(--font-display); }
 .st-can .st-label code { font: 500 .72rem var(--font-mono); opacity: .7; }
 .st-beer p { font-size: .95rem; opacity: .8; }
-.st-beer .st-when { font: 500 .72rem var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: #1E63AD; opacity: 1; }
+.st-beer .st-when { font: 500 .72rem var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--color-lime); opacity: 1; }
 @media (max-height: 700px) { .st-track { margin-top: 14vh; } .st-beer { flex-basis: min(220px, 60vw); } }
 
 /* Finale */
