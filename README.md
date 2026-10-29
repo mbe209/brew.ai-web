@@ -21,16 +21,24 @@ Läuft so auch auf jedem statischen Hosting (Netlify, Vercel, Cloudflare Pages, 
 
 | Pfad | Inhalt |
 |---|---|
-| `index.html` | Die komplette Landingpage |
-| `public/css/styles.css` | Design-Tokens (aus dem Markenkonzept) und Layout, inkl. Dark Mode |
+| `index.html` | Die komplette Landingpage: erst die Scrollytelling-Kapitel, danach Probieren, Rewards, Team, FAQ, Warteliste |
+| `public/css/styles.css` | Design-Tokens (aus dem Markenkonzept) und Layout der ruhigen Abschnitte, inkl. Dark Mode |
+| `public/css/story.css` | Scrollytelling: Kapitel, Parallax-Ebenen, Sticky-Szenen |
+| `public/js/story.js` | Kapitelfarben, Parallax, Rezept-Dolde, füllendes Glas (nutzt `raised` aus config.js), Sorten seitlich |
 | `public/js/config.js` | **Kampagnen-Einstellungen**: Link zur Kampagne, Startdatum, eingesammelter Betrag, Newsletter-Endpunkt |
-| `public/js/main.js` | Flavor-Engine-Demo (regelbasiert), Fortschrittsbalken, Countdown, Artwork-Loader |
+| `public/js/main.js` | Geschmacks-Demo (regelbasiert), Countdown, Warteliste, Artwork-Loader |
 | `public/img/` | Vektor-Platzhalter, bis die Artworks da sind |
 | `public/art/` | Generierte Artworks (`NN-name.webp`) und `manifest.json` |
 | `art/prompts.json` | Alle Nano-Banana-Prompts mit Stil-Suffix und Seitenverhältnis |
 | `scripts/generate-artworks.mjs` | Erzeugt die Artworks über die Gemini API |
 
+## Story und Sprache
+
+Kapitel: Intro → Idee („Bei uns steht AI für Aroma Intelligence“) → Geschmack → Rezept → Sudhaus → Ziele (Glas füllt sich bis 10k/50k/100k) → Sorten. Genuss steht vorn, die Technik bleibt im Hintergrund, keine Vergleiche mit anderen Produkten.
+
 ## Artworks mit Nano Banana erzeugen
+
+Am einfachsten in der Gemini-App mit den Prompts aus `art/prompts.json`. Die fertigen Bilder als `public/art/NN-name.webp` ablegen und in `public/art/manifest.json` eintragen. Alternativ über die API (kostet pro Bild):
 
 Die Seite zeigt automatisch die Bilder aus `public/art/`, sobald sie in `manifest.json` stehen, sonst die Platzhalter.
 

@@ -4,16 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brew.ai – Dein Geschmack. Dein Bier.</title>
-  <meta name="description" content="Brew.ai: Drei Craft-Bier-Fans bauen eine AI Flavor Engine, mit der du dein eigenes Bier konfigurierst. Unterstütze unsere Crowdfunding-Kampagne und hilf, die ersten fünf Sorten zu brauen.">
+  <meta name="description" content="Brew.ai: Drei Craft-Bier-Fans lassen Biere brauen, die genau deinen Geschmack treffen. Unterstütze unsere Crowdfunding-Kampagne und hilf, die ersten fünf Sorten zu brauen.">
   <meta property="og:title" content="Brew.ai – Dein Geschmack. Dein Bier.">
-  <meta property="og:description" content="Die AI Flavor Engine für dein eigenes Craft Beer. Crowdfunding ab 2. Februar 2027.">
+  <meta property="og:description" content="Craft Beer, das genau deinen Geschmack trifft. Crowdfunding ab 2. Februar 2027.">
   <meta property="og:image" content="public/art/13-social-card.webp">
   <meta name="theme-color" content="#0B2545">
   <link rel="icon" href="public/img/hop.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500;1,9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500;1,9..144,700;1,9..144,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="public/css/styles.css">
+  <link rel="stylesheet" href="public/css/story.css">
 </head>
 <body>
   <!-- Wiederverwendbare Hopfendolde -->
@@ -47,72 +48,188 @@
     <nav aria-label="Hauptnavigation">
       <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">Menü</button>
       <ul id="nav-links">
-        <li><a href="#engine">Flavor Engine</a></li>
+        <li><a href="#idee">Idee</a></li>
         <li><a href="#ziele">Crowdfunding</a></li>
-        <li><a href="#rewards">Belohnungen</a></li>
         <li><a href="#sorten">Sorten</a></li>
+        <li><a href="#probieren">Probieren</a></li>
+        <li><a href="#rewards">Belohnungen</a></li>
         <li><a href="#brauereien">Für Brauereien</a></li>
         <li><a class="btn btn--small js-campaign" href="#launch">Unterstützen</a></li>
       </ul>
     </nav>
   </header>
 
+  <div class="st-backdrop" aria-hidden="true"></div>
+  <ol class="st-rail" id="st-rail" aria-label="Kapitel"></ol>
+
   <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero__text">
-        <p class="eyebrow">Crowdfunding ab 2. Februar 2027<span id="countdown"></span></p>
-        <h1>Dein Geschmack.<br><em class="display">Dein Bier.</em></h1>
-        <p class="lead">Wir sind drei Craft-Bier-Fans und bauen die <strong>Brew.ai Flavor Engine</strong>: Du sagst ihr, was du magst, und sie komponiert aus einer riesigen Zutaten-Datenbank Hopfen, Malz, Hefe und Extras zu einem brausicheren Rezept. Die ersten fünf Sorten brauen wir mit dir.</p>
-        <div class="hero__cta">
+    <!-- 0 INTRO -->
+    <section class="st st-intro" data-ch="Intro" data-bg="#0B2545" data-fg="#FAF7F0" id="intro">
+      <img class="st-intro__art" data-art="01-hero-wide" data-optional hidden alt="" data-speed="0.2">
+      <div class="st-layer st-stars" id="st-stars" data-speed="0.15"></div>
+      <div class="st-layer" data-speed="0.35" aria-hidden="true">
+        <svg style="left:8%;top:18%;width:54px;height:70px;transform:rotate(-18deg)"><use href="#hop"/></svg>
+        <svg style="right:12%;top:62%;width:40px;height:52px;transform:rotate(22deg);--hop-fill:#FF8C2B;--hop-stroke:#9a4a08"><use href="#hop"/></svg>
+      </div>
+      <div class="st-layer" data-speed="0.6" aria-hidden="true">
+        <svg style="left:16%;bottom:8%;width:90px;height:117px;transform:rotate(12deg)"><use href="#hop"/></svg>
+        <svg style="right:6%;top:10%;width:70px;height:91px;transform:rotate(-30deg)"><use href="#hop"/></svg>
+      </div>
+      <div class="st-center st-wrap">
+        <p class="st-kicker">Crowdfunding ab 2. Februar 2027</p>
+        <h1 style="margin-top:1.2rem">Dein Geschmack.<span class="st-disp">Dein Bier.</span></h1>
+        <p class="st-lead">Drei Craft-Bier-Fans, viel Hopfen und ein Rezept, das genau deinen Geschmack trifft.</p>
+        <div class="st-cta">
           <a class="btn js-campaign" href="#launch">Zum Start benachrichtigen</a>
-          <a class="btn btn--ghost" href="#engine">Engine ausprobieren</a>
+          <a class="btn btn--ghost" href="#idee">Die Geschichte</a>
+        </div>
+        <div class="st-cue">Scroll und brau mit</div>
+      </div>
+    </section>
+
+    <!-- 1 IDEE -->
+    <section class="st st-idea st-wrap" data-ch="Idee" data-bg="#0E2F57" data-fg="#FAF7F0" id="idee">
+      <h2 class="st-big">Ein eigener Sud ist teuer. Ein <span class="st-disp">Fehlsud</span> noch teurer.</h2>
+      <p class="st-sub">Wer sein eigenes Bier in einer Lohnbrauerei brauen lässt, will danach anstoßen und nicht enttäuscht in die Dose schauen.</p>
+      <h2 class="st-big">Bei uns steht AI für <span class="st-disp">Aroma Intelligence.</span></h2>
+      <p class="st-sub">Nicht für Artificial Intelligence. Sie arbeitet still im Hintergrund und hilft dir, ein Rezept zu entwickeln, das sicher schmeckt. So endet dein Sud nicht in einer Enttäuschung, sondern in einem Hopfenaroma-Rausch, der genau deinen Geschmack trifft.</p>
+    </section>
+
+    <!-- 2 GESCHMACK -->
+    <section class="st st-taste" data-ch="Geschmack" data-bg="#1E63AD" data-fg="#FAF7F0" id="geschmack">
+      <div class="st-layer" id="st-words"></div>
+      <div class="st-copy st-wrap">
+        <p class="st-kicker">Schritt 1</p>
+        <h2>Du erzählst, was dir schmeckt.</h2>
+        <p class="st-quote">„Wie ein Sommerabend am See. Nur mit Mango. Und bitte nicht zu bitter.“</p>
+      </div>
+    </section>
+
+    <!-- 3 REZEPT (sticky) -->
+    <section class="st st-scene" data-ch="Rezept" data-bg="#22612C" data-fg="#FAF7F0" id="rezept">
+      <div class="st-sticky">
+        <div class="st-recipe-grid st-wrap">
+          <svg class="st-hop" id="st-hop" viewBox="0 0 100 130" role="img" aria-label="Hopfendolde, deren Schuppen sich mit dem Rezept füllen"></svg>
+          <div>
+            <p class="st-kicker">Schritt 2 · Aroma Intelligence</p>
+            <h2>Im Hintergrund entsteht dein Rezept.</h2>
+            <dl class="st-recipe" id="st-recipe">
+              <div><dt>Stil</dt><dd>Hazy Pale Ale · 5,2 %</dd></div>
+              <div><dt>Hopfen</dt><dd>Citra, Mosaic, Nectaron</dd></div>
+              <div><dt>Malz</dt><dd>Pale Ale, Hafer, Weizen</dd></div>
+              <div><dt>Hefe</dt><dd>London Ale III</dd></div>
+              <div><dt>Extras</dt><dd>Mango, kalt gehopft</dd></div>
+              <div><dt>Werte</dt><dd>28 IBU · 12 EBC · 12,5 °P</dd></div>
+            </dl>
+            <div class="st-meter"><i id="st-meter"></i></div>
+          </div>
         </div>
       </div>
-      <figure class="hero__art">
-        <img data-art="01-hero" src="public/img/placeholder-hero.svg" alt="Illustration: Hopfendolden, aus denen Geschmackslinien in Blau, Grün und Orange in ein Bierglas strömen" width="640" height="640">
-      </figure>
-      <div class="hero__hops" aria-hidden="true">
-        <svg><use href="#hop"/></svg><svg><use href="#hop"/></svg><svg><use href="#hop"/></svg>
+    </section>
+
+    <!-- 4 SUDHAUS -->
+    <section class="st st-brewery" data-ch="Sudhaus" data-bg="#1E1E24" data-fg="#FAF7F0" id="sudhaus">
+      <div class="st-wrap">
+        <p class="st-kicker">Schritt 3</p>
+        <h2>Ein Braumeister prüft. Die Lohnbrauerei braut.</h2>
+        <p class="st-sub">Kein Hobbykeller, kein Fehlsud. Echte Anlagen, echte Brauer, und dein Bier landet in der Dose.</p>
+        <div class="st-tanks" aria-hidden="true">
+          <svg class="st-vine" viewBox="0 0 1000 80" preserveAspectRatio="none"><path d="M0 40 Q120 0 250 40 T500 40 T750 40 T1000 40" fill="none" stroke="#4CAF50" stroke-width="5" stroke-linecap="round"/></svg>
+          <div class="st-tank" style="left:4%;height:300px" data-speed="-0.12"></div>
+          <div class="st-tank" style="left:28%;height:250px" data-speed="-0.22"></div>
+          <div class="st-tank" style="left:52%;height:320px" data-speed="-0.08"></div>
+          <div class="st-stamp">Rezept freigegeben</div>
+        </div>
       </div>
     </section>
 
-    <div class="wave wave--cream" aria-hidden="true"></div>
-
-    <!-- SO FUNKTIONIERT'S -->
-    <section class="section section--cream" id="so-gehts">
-      <p class="eyebrow">So funktioniert's</p>
-      <h2>Vom Bauchgefühl zum Braurezept</h2>
-      <ol class="steps">
-        <li class="step">
-          <span class="step__num">1</span>
-          <h3>Geschmack erzählen</h3>
-          <p>Lieblingsbiere, Aromen, Bittere, Körper, Stärke. Du beschreibst, die Engine hört zu. Gern auch: „Wie Sommerabend am See, nur mit Mango.“</p>
-        </li>
-        <li class="step">
-          <span class="step__num">2</span>
-          <h3>Engine komponiert</h3>
-          <p>Die AI gleicht dein Profil mit hunderten Hopfensorten, Malzen, Hefen und Extras ab und balanciert Bittere, Süße und Aroma zu einem stimmigen Rezept.</p>
-        </li>
-        <li class="step">
-          <span class="step__num">3</span>
-          <h3>Feinschliff</h3>
-          <p>Mehr Zitrus? Weniger Bittere? Du drehst an den Reglern, die Engine rechnet Stammwürze, IBU, Farbe und Alkohol live nach.</p>
-        </li>
-        <li class="step">
-          <span class="step__num">4</span>
-          <h3>Geprüft &amp; gebraut</h3>
-          <p>Ein Braumeister prüft jedes Rezept, dann braut es eine Lohnbrauerei. Kein Hobbykeller nötig, dein Bier kommt in die Dose.</p>
-        </li>
-      </ol>
+    <!-- 5 ZIELE: das Glas füllt sich (sticky) -->
+    <section class="st st-scene" data-ch="Ziele" data-bg="#FFF0D2" data-fg="#0B2545" id="ziele">
+      <div class="st-sticky">
+        <div class="st-goals-grid st-wrap">
+          <svg class="st-glass" viewBox="0 0 200 320" role="img" aria-label="Bierglas, das sich bis zu den Kampagnenzielen füllt">
+            <defs><clipPath id="st-glassclip"><path d="M30 20 L170 20 L152 300 Q150 312 138 312 L62 312 Q50 312 48 300 Z"/></clipPath></defs>
+            <g clip-path="url(#st-glassclip)">
+              <rect x="0" y="0" width="200" height="320" fill="#FAF7F0"/>
+              <rect id="st-beer" x="0" y="312" width="200" height="320" fill="#FFB547"/>
+              <rect id="st-foam" x="0" y="300" width="200" height="16" fill="#FAF7F0"/>
+              <g id="st-glassbubbles" fill="#FAF7F0" opacity=".7"></g>
+            </g>
+            <path d="M30 20 L170 20 L152 300 Q150 312 138 312 L62 312 Q50 312 48 300 Z" fill="none" stroke="#0B2545" stroke-width="5" stroke-linejoin="round"/>
+            <g font-family="JetBrains Mono, monospace" font-size="10" fill="#0B2545">
+              <line x1="164" y1="283" x2="186" y2="283" stroke="#0B2545" stroke-width="2"/><text x="188" y="286">10k</text>
+              <line x1="166" y1="168" x2="186" y2="168" stroke="#0B2545" stroke-width="2"/><text x="188" y="171">50k</text>
+              <line x1="170" y1="30" x2="186" y2="30" stroke="#0B2545" stroke-width="2"/><text x="188" y="33">100k</text>
+            </g>
+          </svg>
+          <div>
+            <p class="st-kicker">Crowdfunding · ab 2. Februar 2027</p>
+            <h2>Je voller das Glas, desto mehr Sorten.</h2>
+            <p class="st-sub">Alles oder nichts: Erst wenn 10.000 € zusammenkommen, wird gebraut und jemand belastet.</p>
+            <ul class="st-miles" id="st-miles">
+              <li data-at="0.1"><b>10.000 €</b><span>Citra Comet wird gebraut</span><small>Funding-Ziel · Sorte 1</small></li>
+              <li data-at="0.5"><b>50.000 €</b><span>Mango Mood kommt dazu</span><small>Stretch Goal · 2 Sorten</small></li>
+              <li data-at="1"><b>100.000 €</b><span>Ihr stimmt über 3 weitere ab</span><small>Stretch Goal · 5 Sorten + Webstore</small></li>
+            </ul>
+            <p class="st-raised" id="st-raised">Extras: 25.000 € Glas in jeder Box · 75.000 € Konfigurator-Beta · 150.000 € Release-Party</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- ENGINE DEMO -->
-    <section class="section section--navy" id="engine">
+    <!-- 6 SORTEN (seitlich) -->
+    <section class="st st-scene st-beers" data-ch="Sorten" data-bg="#FAF7F0" data-fg="#0B2545" id="sorten" style="height:260vh">
+      <div class="st-sticky">
+        <div class="st-head st-wrap">
+          <p class="st-kicker">Die ersten fünf · Arbeitstitel</p>
+          <h2>Fünf Dosen, fünf Geschichten.</h2>
+        </div>
+        <div class="st-track" id="st-track">
+          <article class="st-beer">
+            <div class="st-can" style="--c:#FF8C2B">
+              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="06-sorte-1" data-optional hidden alt="Etikett-Artwork Citra Comet"></div>
+              <div class="st-label"><code>#BA-001</code><strong>Citra Comet</strong><code>West Coast IPA · 6,2 %</code></div>
+            </div>
+            <p class="st-when">ab 10.000 €</p><p>Grapefruit, Zitrus, knackig bitter.</p>
+          </article>
+          <article class="st-beer">
+            <div class="st-can" style="--c:#FFB547">
+              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="07-sorte-2" data-optional hidden alt="Etikett-Artwork Mango Mood"></div>
+              <div class="st-label"><code>#BA-002</code><strong>Mango Mood</strong><code>Hazy Pale Ale · 5,2 %</code></div>
+            </div>
+            <p class="st-when">ab 50.000 €</p><p>Mango, Maracuja, weich.</p>
+          </article>
+          <article class="st-beer">
+            <div class="st-can" style="--c:#EDE4D3">
+              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="08-sorte-3" data-optional hidden alt="Etikett-Artwork Mighty Malt"></div>
+              <div class="st-label"><code>#BA-003</code><strong>Mighty Malt</strong><code>Amber Ale · 5,6 %</code></div>
+            </div>
+            <p class="st-when">Voting ab 100.000 €</p><p>Karamell, Brotkruste, Hopfenwürze.</p>
+          </article>
+          <article class="st-beer">
+            <div class="st-can" style="--c:#C6E35A">
+              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="08-sorte-4" data-optional hidden alt="Etikett-Artwork Yummy Yuzu"></div>
+              <div class="st-label"><code>#BA-004</code><strong>Yummy Yuzu</strong><code>Session IPA · 4,0 %</code></div>
+            </div>
+            <p class="st-when">Voting ab 100.000 €</p><p>Yuzu, Limette, sehr frisch.</p>
+          </article>
+          <article class="st-beer">
+            <div class="st-can" style="--c:#0B2545">
+              <div class="st-art"><svg viewBox="0 0 100 130" style="--hop-fill:#FF8C2B;--hop-stroke:#FAF7F0;--hop-leaf:#C6E35A" aria-hidden="true"><use href="#hop"/></svg><img data-art="08-sorte-5" data-optional hidden alt="Etikett-Artwork Midnight Hop"></div>
+              <div class="st-label"><code>#BA-005</code><strong>Midnight Hop</strong><code>Black IPA · 6,8 %</code></div>
+            </div>
+            <p class="st-when">Voting ab 100.000 €</p><p>Röstaromen, Kiefer, Kaffee.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBIEREN (Demo) -->
+    <section class="section section--navy" id="probieren">
       <div class="engine__intro">
-        <p class="eyebrow eyebrow--light">Flavor Engine · Vorschau</p>
-        <h2>Probier's aus: dein Flavor-Profil</h2>
-        <p>Das hier ist eine vereinfachte Demo mit festen Regeln. Die echte Engine entwickeln wir mit dem Geld aus dem Crowdfunding, mit vollständiger Zutaten-Datenbank und Rezeptberechnung.</p>
+        <p class="eyebrow eyebrow--light">Probier's aus · Vorschau</p>
+        <h2>Wie schmeckt dein Bier?</h2>
+        <p>Schieb die Regler, wähl deine Aromen und schau, welches Bier dabei herauskommt. Eine vereinfachte Vorschau: Die volle Aroma Intelligence mit über 2.000 Zutaten entwickeln wir mit dem Geld aus dem Crowdfunding.</p>
       </div>
       <div class="engine">
         <form class="engine__controls" id="engine-form" aria-label="Flavor-Regler">
@@ -158,48 +275,6 @@
       </div>
     </section>
 
-    <!-- CROWDFUNDING-ZIELE -->
-    <section class="section" id="ziele">
-      <p class="eyebrow">Crowdfunding · ab 2. Februar 2027</p>
-      <h2>Je mehr Unterstützung, desto mehr Sorten</h2>
-      <p class="section__lead">Mit dem Geld entwickeln wir die Flavor Engine und lassen die ersten Sude in einer Lohnbrauerei brauen. Jede Stufe schaltet neue Sorten frei, die es danach dauerhaft in unserem Webstore gibt.</p>
-      <div class="goal" id="goal">
-        <div class="goal__bar" role="progressbar" aria-label="Crowdfunding-Fortschritt" aria-valuemin="0" aria-valuemax="100000" aria-valuenow="0" id="goal-bar">
-          <div class="goal__fill" id="goal-fill"></div>
-          <span class="goal__mark" style="--at:10%">10k</span>
-          <span class="goal__mark" style="--at:50%">50k</span>
-          <span class="goal__mark" style="--at:100%">100k</span>
-        </div>
-        <p class="goal__raised"><b id="goal-raised">0 €</b> von 100.000 € · <span id="goal-status">Kampagne startet am 2. Februar 2027</span></p>
-      </div>
-      <div class="tiers">
-        <article class="tier" data-goal="10000">
-          <p class="tier__amount">10.000 €</p>
-          <h3>Funding-Ziel: Erstsud</h3>
-          <p>Prototyp der Flavor Engine und <strong>1 Sorte</strong>: #BA-001 Citra Comet, gebraut in der Lohnbrauerei.</p>
-          <div class="tier__cans"><span class="can can--1"></span></div>
-        </article>
-        <article class="tier" data-goal="50000">
-          <p class="tier__amount">50.000 €</p>
-          <h3>Stretch Goal: Doppelsud</h3>
-          <p><strong>2 Sorten</strong>: dazu kommt #BA-002 Mango Mood.</p>
-          <div class="tier__cans"><span class="can can--1"></span><span class="can can--2"></span></div>
-        </article>
-        <article class="tier tier--hero" data-goal="100000">
-          <p class="tier__amount">100.000 €</p>
-          <h3>Stretch Goal: Full Flavor</h3>
-          <p><strong>5 Sorten</strong>: über die Sorten 3 bis 5 stimmt ihr ab. Danach gibt es alle dauerhaft im Webstore.</p>
-          <div class="tier__cans"><span class="can can--1"></span><span class="can can--2"></span><span class="can can--3"></span><span class="can can--4"></span><span class="can can--5"></span></div>
-        </article>
-      </div>
-      <ul class="extras">
-        <li><b>25.000 €</b> Brew.ai Glas in allen Boxen ab 35 €</li>
-        <li><b>75.000 €</b> Öffentliche Engine-Beta für alle Backer</li>
-        <li><b>150.000 €</b> Release-Party in einer Craft-Bier-Bar</li>
-      </ul>
-      <p class="fine">Alles oder nichts: Nur wenn das Funding-Ziel von 10.000 € erreicht wird, wird jemand belastet. Die weiteren Stufen sind Stretch Goals.</p>
-    </section>
-
     <!-- REWARDS -->
     <section class="section section--cream" id="rewards">
       <p class="eyebrow">Belohnungen · Entwurf</p>
@@ -213,7 +288,7 @@
         <article class="reward">
           <p class="reward__price">15 €</p>
           <h3>Recipe Insider</h3>
-          <ul><li>Alle Rezeptkarten digital</li><li>Early Access zur Engine-Beta</li></ul>
+          <ul><li>Alle Rezeptkarten digital</li><li>Early Access zum Rezept-Konfigurator</li></ul>
         </article>
         <article class="reward">
           <p class="reward__badge reward__badge--blue">Early Bird · 300×</p>
@@ -230,7 +305,7 @@
           <p class="reward__badge">Unser Tipp</p>
           <p class="reward__price">99 €</p>
           <h3>Founders Box</h3>
-          <ul><li>12 Dosen Mix, Glas, T-Shirt</li><li>12 Monate Engine Pro</li><li>Deine Stimme beim Sorten-Voting</li></ul>
+          <ul><li>12 Dosen Mix, Glas, T-Shirt</li><li>12 Monate Konfigurator Pro</li><li>Deine Stimme beim Sorten-Voting</li></ul>
         </article>
         <article class="reward">
           <p class="reward__badge reward__badge--blue">200×</p>
@@ -248,7 +323,7 @@
           <p class="reward__badge reward__badge--blue">5×</p>
           <p class="reward__price">990 €</p>
           <h3>Your Own Beer</h3>
-          <ul><li>Dein Rezept, mit dir in der Engine konfiguriert</li><li>50 l auf der Pilotanlage, ca. 110 Dosen mit eigenem Etikett</li></ul>
+          <ul><li>Dein Rezept, gemeinsam mit dir konfiguriert</li><li>50 l auf der Pilotanlage, ca. 110 Dosen mit eigenem Etikett</li></ul>
         </article>
         <article class="reward reward--dark">
           <p class="reward__badge reward__badge--blue">10×</p>
@@ -260,45 +335,6 @@
       <p class="fine">Entwurf, finale Preise folgen vor dem Start. Versand bei Bier-Rewards zzgl. ca. 7–9 € innerhalb Deutschlands. Bier liefern wir nur an Personen ab 18 Jahren, mit Altersprüfung bei der Zustellung.</p>
     </section>
 
-    <!-- SORTEN -->
-    <section class="section" id="sorten">
-      <p class="eyebrow">Die ersten fünf · Arbeitstitel</p>
-      <h2>Sorten, die wir brauen wollen</h2>
-      <div class="beers">
-        <article class="beer beer--1">
-          <img data-art="06-sorte-1" src="public/img/placeholder-can.svg" alt="Etikett-Artwork Citra Comet" loading="lazy">
-          <p class="beer__id">#BA-001 · 10.000 €</p>
-          <h3>Citra Comet</h3><p class="beer__style">West Coast IPA · 6,2 %</p>
-          <p>Grapefruit, Zitrus, knackig bitter. Unser Erstsud.</p>
-        </article>
-        <article class="beer beer--2">
-          <img data-art="07-sorte-2" src="public/img/placeholder-can.svg" alt="Etikett-Artwork Mango Mood" loading="lazy">
-          <p class="beer__id">#BA-002 · 50.000 €</p>
-          <h3>Mango Mood</h3><p class="beer__style">Hazy Pale Ale · 5,2 %</p>
-          <p>Mango, Maracuja, weich und mit wenig Bittere.</p>
-        </article>
-        <article class="beer beer--3">
-          <img data-art="08-sorte-3" src="public/img/placeholder-can.svg" alt="Etikett-Artwork Mighty Malt" loading="lazy">
-          <p class="beer__id">#BA-003 · Voting</p>
-          <h3>Mighty Malt</h3><p class="beer__style">Amber Ale · 5,6 %</p>
-          <p>Karamell, Brotkruste, leichte Hopfenwürze.</p>
-        </article>
-        <article class="beer beer--4">
-          <img data-art="08-sorte-4" src="public/img/placeholder-can.svg" alt="Etikett-Artwork Yummy Yuzu" loading="lazy">
-          <p class="beer__id">#BA-004 · Voting</p>
-          <h3>Yummy Yuzu</h3><p class="beer__style">Session IPA · 4,0 %</p>
-          <p>Yuzu, Limette, sehr frisch.</p>
-        </article>
-        <article class="beer beer--5">
-          <img data-art="08-sorte-5" src="public/img/placeholder-can.svg" alt="Etikett-Artwork Midnight Hop" loading="lazy">
-          <p class="beer__id">#BA-005 · Voting</p>
-          <h3>Midnight Hop</h3><p class="beer__style">Black IPA · 6,8 %</p>
-          <p>Röstaromen, Kiefer, Kaffee und Zitrus.</p>
-        </article>
-      </div>
-      <p class="fine">Sorten 3 bis 5 sind Kandidaten fürs Community-Voting ab 100.000 €. Weitere Ideen: Hibiscus Pale Ale, Hoppy Weizen, alkoholfreies IPA.</p>
-    </section>
-
     <!-- TEAM -->
     <section class="section section--green" id="team">
       <div class="team">
@@ -308,10 +344,10 @@
         <div>
           <p class="eyebrow eyebrow--light">Wer wir sind</p>
           <h2>Drei Craft-Bier-Fans mit einer Mission</h2>
-          <p>Wir trinken seit Jahren alles, was hopfig, sauer, rauchig oder einfach nur verrückt ist. Irgendwann kam die Frage: Was, wenn jede und jeder sein perfektes Bier komponieren könnte, ohne Braukurs und eigene Anlage? So wie es schon Whisky gibt, der mit AI entwickelt wurde, wollen wir das für Craft Beer bauen.</p>
+          <p>Wir trinken seit Jahren alles, was hopfig, sauer, rauchig oder einfach nur verrückt ist. Irgendwann kam die Frage: Was, wenn jede und jeder sein perfektes Bier komponieren könnte, ohne Braukurs und eigene Anlage? Genau das bauen wir: Rezepte, die sicher schmecken, gebraut von Profis.</p>
           <ul class="founders">
             <li><b>Gründer 1</b><span>Hopfen-Nerd &amp; Produkt</span></li>
-            <li><b>Gründer 2</b><span>Daten &amp; Engine</span></li>
+            <li><b>Gründer 2</b><span>Rezepte &amp; Aroma Intelligence</span></li>
             <li><b>Gründer 3</b><span>Brauen &amp; Community</span></li>
           </ul>
         </div>
@@ -326,7 +362,7 @@
         <li><b>Feb 2027</b><span>Crowdfunding live, 30 Tage</span></li>
         <li><b>März–April</b><span>Sude in der Lohnbrauerei, Etiketten, Abfüllung</span></li>
         <li><b>Mai 2027</b><span>Versand der Boxen und Release-Party</span></li>
-        <li><b>Juni 2027</b><span>Webstore mit allen Sorten, Engine-Beta öffentlich</span></li>
+        <li><b>Juni 2027</b><span>Webstore mit allen Sorten, Rezept-Konfigurator öffentlich</span></li>
         <li><b>Danach</b><span>Eigene Rezepte über Partner-Lohnbrauereien in deiner Nähe</span></li>
       </ol>
     </section>
@@ -359,15 +395,17 @@
         <details><summary>Was passiert, wenn das Ziel nicht erreicht wird?</summary><p>Die Kampagne läuft nach dem Alles-oder-nichts-Prinzip. Wird das Funding-Ziel von 10.000 € nicht erreicht, wird niemand belastet.</p></details>
         <details><summary>Was ist mit Allergenen?</summary><p>Unsere Biere enthalten Gerste, teils Weizen oder Hafer (glutenhaltig). Alle Pflichtangaben stehen auf dem Etikett und auf der Rezeptkarte.</p></details>
         <details><summary>Wohin liefert ihr?</summary><p>Zum Start innerhalb Deutschlands, weitere Länder prüfen wir. Versand nur an Personen ab 18 Jahren, mit Altersprüfung bei der Zustellung.</p></details>
-        <details><summary>Kann ich mein eigenes Rezept brauen lassen?</summary><p>Ja, das ist das Ziel. Schon in der Kampagne geht das mit dem Reward „Your Own Beer“. Später öffnen wir die Engine im Webstore für alle.</p></details>
+        <details><summary>Kann ich mein eigenes Rezept brauen lassen?</summary><p>Ja, das ist das Ziel. Schon in der Kampagne geht das mit dem Reward „Your Own Beer“. Später öffnen wir den Rezept-Konfigurator im Webstore für alle.</p></details>
       </div>
     </section>
 
     <!-- LAUNCH -->
     <section class="launch" id="launch">
+      <div class="st-layer st-bubbles" id="st-bubbles" aria-hidden="true"></div>
       <svg class="launch__hop" aria-hidden="true"><use href="#hop"/></svg>
-      <h2>Sei beim Start dabei</h2>
-      <p>Hol dir dein Bier, bevor es existiert. Wir melden uns, sobald die Kampagne live ist, und Early Birds bekommen die besten Rewards.</p>
+      <h2>Hol dir dein Bier, bevor es existiert.</h2>
+      <p>Trag dich ein, dann melden wir uns zum Start. Early Birds bekommen 4 Dosen Citra Comet für 25 €.</p>
+      <div class="count" id="count" aria-label="Countdown bis zum Kampagnenstart"></div>
       <form class="signup" id="signup">
         <label class="sr-only" for="email">E-Mail-Adresse</label>
         <input id="email" name="email" type="email" placeholder="deine@email.de" required autocomplete="email">
@@ -385,5 +423,6 @@
 
   <script src="public/js/config.js"></script>
   <script src="public/js/main.js"></script>
+  <script src="public/js/story.js"></script>
 </body>
 </html>

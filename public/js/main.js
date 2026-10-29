@@ -2,7 +2,6 @@
   const cfg = window.BREW_CONFIG || {};
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
-  const euro = (n) => n.toLocaleString("de-DE") + " €";
 
   // Mobile-Navigation
   const toggle = $(".nav__toggle");
@@ -28,27 +27,26 @@
     .then((r) => (r.ok ? r.json() : {}))
     .then((files) => {
       $$("img[data-art]").forEach((img) => {
-        if (files[img.dataset.art]) img.src = `public/art/${files[img.dataset.art]}`;
+        if (!files[img.dataset.art]) return;
+        img.src = `public/art/${files[img.dataset.art]}`;
+        img.hidden = false;
       });
     })
     .catch(() => {});
 
-  // Fortschritt
-  const raised = cfg.raised || 0;
-  const goal = cfg.goal || 100000;
-  $("#goal-raised").textContent = euro(raised);
-  $("#goal-bar").setAttribute("aria-valuenow", raised);
-  requestAnimationFrame(() => { $("#goal-fill").style.width = Math.min(100, (raised / goal) * 100) + "%"; });
-  const reached = $$(".tier").filter((t) => raised >= +t.dataset.goal);
-  reached.forEach((t) => t.classList.add("reached"));
   // Countdown bis zum Start
-  const days = Math.ceil((new Date(cfg.launchDate) - Date.now()) / 864e5);
-  if (days > 0) $("#countdown").textContent = ` · noch ${days} Tage`;
-  else if (cfg.campaignUrl) $("#countdown").textContent = " · jetzt live!";
-
-  if (cfg.campaignUrl && raised > 0) {
-    $("#goal-status").textContent = reached.length ? `Stufe ${reached.length} erreicht!` : "Kampagne läuft";
+  const launch = new Date(cfg.launchDate);
+  const count = $("#count");
+  function tick() {
+    let d = Math.max(0, launch - Date.now());
+    if (!d && cfg.campaignUrl) { count.innerHTML = "<div><b>Live!</b><small>Jetzt unterstützen</small></div>"; return; }
+    count.innerHTML = [["Tage", 864e5], ["Std", 36e5], ["Min", 6e4], ["Sek", 1e3]].map(([l, ms]) => {
+      const n = Math.floor(d / ms); d -= n * ms;
+      return `<div><b>${String(n).padStart(2, "0")}</b><small>${l}</small></div>`;
+    }).join("");
   }
+  tick();
+  setInterval(tick, 1000);
 
   // Anmeldung
   $("#signup").addEventListener("submit", async (e) => {
