@@ -47,10 +47,10 @@
 /* 1 Idee */
 .st-idea { padding-block: 22vh; }
 .st-idea .st-big { font-size: clamp(2.2rem, 6.5vw, 5.4rem); max-width: 16ch; }
-.st-idea .st-big + .st-sub + .st-big { margin-top: 26vh; margin-left: auto; text-align: right; }
+.st-idea .st-big.st-right { margin-top: 26vh; margin-left: auto; text-align: right; }
 .st-idea .st-big .st-disp { color: var(--color-lime); }
 .st-idea .st-sub { margin-top: 1.4rem; max-width: 32rem; font-size: 1.1rem; opacity: .88; }
-.st-idea .st-big + .st-sub + .st-big + .st-sub { margin-left: auto; text-align: right; }
+.st-idea .st-sub.st-right { margin-left: auto; text-align: right; }
 
 /* 2 Geschmack */
 .st-taste { padding-block: 20vh; min-height: 140vh; overflow: hidden; }
@@ -77,20 +77,47 @@
   .st-recipe { font-size: .82rem; } .st-recipe div { grid-template-columns: 5.5rem 1fr; padding: .3rem 0; }
 }
 
-/* 4 Sudhaus: ein Tank, eine Ranke */
+/* Figuren (Hopfen, Malz, Hefe) und Szenenbilder */
+.st-char { position: absolute; height: auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,.45)); pointer-events: none; }
+.st-trio { top: auto; height: 46%; }
+.st-trio__hop { left: 3%; bottom: -2%; width: clamp(90px, 13vw, 190px); transform: rotate(-6deg); }
+.st-trio__malz { right: 15%; bottom: -4%; width: clamp(70px, 10vw, 150px); }
+.st-trio__hefe { right: 2%; bottom: 8%; width: clamp(80px, 11vw, 165px); transform: rotate(8deg); }
+.st-idea { position: relative; }
+.st-idea__char { width: clamp(110px, 14vw, 210px); }
+.st-idea__char--left { right: 6%; top: 18vh; }
+.st-idea__char--right { left: 4%; bottom: 14vh; }
+.st-taste__char { right: 10%; top: 34%; width: clamp(100px, 12vw, 180px); z-index: 2; }
+.st-scenecard { margin: 0; position: relative; justify-self: center; width: min(100%, 520px); }
+.st-scenecard img { width: 100%; border-radius: 28px; box-shadow: 0 30px 70px rgba(0,0,0,.5); }
+.st-scenecard .st-hop { position: absolute; right: -18px; bottom: -22px; width: 74px; height: 96px; filter: drop-shadow(0 8px 16px rgba(0,0,0,.5)); }
+.st-scenecard--fade img { border-radius: 0; box-shadow: none; -webkit-mask-image: radial-gradient(closest-side, #000 72%, transparent); mask-image: radial-gradient(closest-side, #000 72%, transparent); }
+.st-glasswrap { position: relative; justify-self: center; width: min(100%, 340px); }
+.st-glasswrap .st-glass { width: 100%; }
+.st-glass__char { width: 34%; left: 2%; top: -17%; transform: rotate(-6deg); }
+@media (max-width: 820px) {
+  .st-idea__char, .st-taste__char { position: relative; display: block; inset: auto; margin: 0 0 1rem auto; width: 110px; }
+  .st-idea__char--right { margin: 2rem auto 1rem 0; }
+  .st-trio { height: 30%; }
+  .st-scenecard { width: min(100%, 300px); }
+  .st-recipe-grid .st-scenecard { width: 190px; }
+  .st-scenecard .st-hop { width: 44px; height: 57px; right: -8px; bottom: -12px; }
+  .st-glasswrap { width: 104px; }
+}
+
+/* 4 Sudhaus */
 .st-brewery { padding-block: 18vh; overflow: hidden; }
 .st-brew-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 .st-brewery h2 { font-size: clamp(2.2rem, 5.4vw, 4.4rem); max-width: 13ch; margin-top: .8rem; }
 .st-brewery .st-sub { margin-top: 1.4rem; max-width: 30rem; font-size: 1.1rem; opacity: .85; }
-.st-tank { width: min(100%, 380px); justify-self: center; overflow: visible; will-change: transform; }
-.st-vinehops svg { transition: opacity .5s, transform .5s; transform-box: fill-box; transform-origin: center; }
-@media (max-width: 820px) { .st-brew-grid { grid-template-columns: 1fr; } .st-tank { width: 240px; } }
+#st-tank { will-change: transform; }
+@media (max-width: 820px) { .st-brew-grid { grid-template-columns: 1fr; } }
 
 /* 5 Glas = Ziele */
 .st-goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
 .st-goals-grid h2 { font-size: clamp(2rem, 4.6vw, 3.8rem); margin-top: .8rem; }
 .st-goals-grid .st-sub { margin-top: 1rem; opacity: .8; max-width: 30rem; }
-.st-glass { width: min(100%, 340px); justify-self: center; overflow: visible; }
+.st-glass { overflow: visible; }
 .st-miles { margin: 1.8rem 0 0; display: grid; gap: .8rem; list-style: none; padding: 0; }
 .st-miles li { display: grid; grid-template-columns: auto 1fr; gap: .2rem 1rem; padding: 1rem 1.1rem; border-radius: 16px; border: 1px solid rgba(250,247,240,.18); transition: .4s; }
 .st-miles b { font: 700 1.5rem var(--font-head); grid-row: span 2; min-width: 6.2rem; font-variant-numeric: tabular-nums; }
@@ -103,7 +130,6 @@
   .st-goals-grid { grid-template-columns: 1fr; gap: .8rem; }
   .st-goals-grid h2 { font-size: 1.8rem; }
   .st-goals-grid .st-sub { display: none; }
-  .st-glass { width: 104px; }
   .st-miles { margin-top: .8rem; gap: .5rem; } .st-miles li { padding: .6rem .8rem; } .st-miles b { font-size: 1.1rem; min-width: 4.6rem; }
 }
 
@@ -136,3 +162,9 @@
 @media (prefers-reduced-motion: reduce) {
   .st-recipe div { opacity: 1; transform: none; }
 }
+
+/* Finale: Trio */
+.launch__trio { display: flex; justify-content: center; align-items: flex-end; gap: .5rem; margin-bottom: 1rem; }
+.launch__trio .st-char { position: static; width: clamp(70px, 9vw, 120px); filter: drop-shadow(0 12px 20px rgba(11,37,69,.35)); }
+.launch__trio .st-char:nth-child(1) { transform: rotate(-8deg); }
+.launch__trio .st-char:nth-child(3) { transform: rotate(8deg); }

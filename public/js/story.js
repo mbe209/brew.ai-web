@@ -78,10 +78,6 @@
   const recipeRows = $$("#st-recipe div");
   const miles = $$("#st-miles li");
   let current = null;
-  const vine = $("#st-vine");
-  const vineLen = vine.getTotalLength();
-  vine.style.strokeDasharray = vineLen;
-  const vineHops = $$(".st-vinehops svg");
 
   function frame() {
     const H = innerHeight;
@@ -111,12 +107,10 @@
       });
     }
 
-    // Sudhaus: Tank steigt leicht, Ranke wächst, Dolden erscheinen
+    // Sudhaus: Szene steigt leicht
     const br = $("#sudhaus").getBoundingClientRect();
     const bp = clamp((H - br.top) / (H + br.height) * 1.6 - 0.2);
-    vine.style.strokeDashoffset = vineLen * (1 - bp);
     if (!reduce) $("#st-tank").style.transform = `translate3d(0, ${(1 - bp) * 50}px, 0)`;
-    vineHops.forEach((h, i) => { const on = bp > 0.25 + i * 0.18; h.style.opacity = on ? 1 : 0; h.style.transform = on ? "none" : "scale(.4)"; });
 
     // Rezept
     const ep = progress($("#rezept"));

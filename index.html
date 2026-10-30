@@ -75,6 +75,11 @@
         <svg style="left:16%;bottom:8%;width:90px;height:117px;transform:rotate(12deg)"><use href="#hop"/></svg>
         <svg style="right:6%;top:10%;width:70px;height:91px;transform:rotate(-30deg)"><use href="#hop"/></svg>
       </div>
+      <div class="st-layer st-trio" data-speed="0.25">
+        <img class="st-char st-trio__hop" src="public/art/40-hopfen-daumen.webp" alt="Hopfen-Figur mit Daumen hoch" loading="lazy">
+        <img class="st-char st-trio__malz" src="public/art/40-malz-jubelt.webp" alt="Malz-Figur jubelt" loading="lazy">
+        <img class="st-char st-trio__hefe" src="public/art/40-hefe-springt.webp" alt="Hefe-Figur springt vor Freude" loading="lazy">
+      </div>
       <div class="st-center st-wrap">
         <p class="st-kicker">Crowdfunding ab 2. Februar 2027</p>
         <h1 style="margin-top:1.2rem">Dein Geschmack.<span class="st-disp">Dein Bier.</span></h1>
@@ -89,15 +94,18 @@
 
     <!-- 1 IDEE -->
     <section class="st st-idea st-wrap" data-ch="Idee" data-bg="#1E63AD" data-fg="#FAF7F0" id="idee">
+      <img class="st-char st-idea__char st-idea__char--left" src="public/art/40-malz-rennt.webp" alt="Malz-Figur rennt erschrocken davon" loading="lazy" data-speed="-0.12">
       <h2 class="st-big">Ein eigener Sud ist teuer. Ein <span class="st-disp">Fehlsud</span> noch teurer.</h2>
       <p class="st-sub">Wer sein eigenes Bier in einer Lohnbrauerei brauen lässt, will danach anstoßen und nicht enttäuscht in die Dose schauen.</p>
-      <h2 class="st-big">Bei uns steht AI für <span class="st-disp">Aroma Intelligence.</span></h2>
-      <p class="st-sub">Nicht für Artificial Intelligence. Sie arbeitet still im Hintergrund und hilft dir, ein Rezept zu entwickeln, das sicher schmeckt. So endet dein Sud nicht in einer Enttäuschung, sondern in einem Hopfenaroma-Rausch, der genau deinen Geschmack trifft.</p>
+      <img class="st-char st-idea__char st-idea__char--right" src="public/art/40-hopfen-cool.webp" alt="Hopfen-Figur mit verschränkten Armen, ganz entspannt" loading="lazy" data-speed="-0.12">
+      <h2 class="st-big st-right">Bei uns steht AI für <span class="st-disp">Aroma Intelligence.</span></h2>
+      <p class="st-sub st-right">Nicht für Artificial Intelligence. Sie arbeitet still im Hintergrund und hilft dir, ein Rezept zu entwickeln, das sicher schmeckt. So endet dein Sud nicht in einer Enttäuschung, sondern in einem Hopfenaroma-Rausch, der genau deinen Geschmack trifft.</p>
     </section>
 
     <!-- 2 GESCHMACK -->
     <section class="st st-taste" data-ch="Geschmack" data-bg="#2E86DE" data-fg="#FAF7F0" id="geschmack">
       <div class="st-layer" id="st-words"></div>
+      <img class="st-char st-taste__char" src="public/art/40-malz-denkt.webp" alt="Malz-Figur überlegt, was ihr schmeckt" loading="lazy" data-speed="-0.2">
       <div class="st-copy st-wrap">
         <p class="st-kicker">Schritt 1</p>
         <h2>Du erzählst, was dir schmeckt.</h2>
@@ -109,7 +117,10 @@
     <section class="st st-scene" data-ch="Rezept" data-bg="#4CAF50" data-fg="#FAF7F0" id="rezept">
       <div class="st-sticky">
         <div class="st-recipe-grid st-wrap">
-          <svg class="st-hop" id="st-hop" viewBox="0 0 100 130" role="img" aria-label="Hopfendolde, deren Schuppen sich mit dem Rezept füllen"></svg>
+          <figure class="st-scenecard">
+            <img src="public/art/20-szene-rezept.webp" alt="Hopfen, Malz und Hefe tüfteln am Laptop an einem Bierrezept" loading="lazy">
+            <svg class="st-hop" id="st-hop" viewBox="0 0 100 130" aria-hidden="true"></svg>
+          </figure>
           <div>
             <p class="st-kicker">Schritt 2 · Aroma Intelligence</p>
             <h2>Im Hintergrund entsteht dein Rezept.</h2>
@@ -135,31 +146,9 @@
           <h2>Ein Braumeister prüft. Die Lohnbrauerei braut.</h2>
           <p class="st-sub">Kein Hobbykeller, kein Fehlsud. Echte Anlagen, echte Brauer, und dein Bier landet in der Dose.</p>
         </div>
-        <svg class="st-tank" id="st-tank" viewBox="0 0 320 470" role="img" aria-label="Edelstahl-Gärtank mit Hopfendolde, an dem eine Hopfenranke emporwächst">
-          <defs>
-            <linearGradient id="st-steel" x1="0" x2="1">
-              <stop offset="0" stop-color="#3E4855"/><stop offset=".22" stop-color="#8E9AA8"/><stop offset=".42" stop-color="#E4EAF0"/>
-              <stop offset=".58" stop-color="#A3AEBB"/><stop offset="1" stop-color="#46505D"/>
-            </linearGradient>
-            <radialGradient id="st-tankglow"><stop offset="0" stop-color="#C6E35A" stop-opacity=".22"/><stop offset="1" stop-color="#C6E35A" stop-opacity="0"/></radialGradient>
-          </defs>
-          <ellipse cx="160" cy="230" rx="170" ry="210" fill="url(#st-tankglow)"/>
-          <g stroke="#56616F" stroke-width="8" stroke-linecap="round"><path d="M100 395 L84 462"/><path d="M220 395 L236 462"/></g>
-          <path d="M160 412 L160 440 Q160 448 168 448 L290 448" fill="none" stroke="#7D8997" stroke-width="9" stroke-linecap="round"/>
-          <path d="M70 92 Q72 40 160 34 Q248 40 250 92 L250 326 L176 410 L144 410 L70 326 Z" fill="url(#st-steel)"/>
-          <rect x="102" y="60" width="14" height="300" rx="7" fill="#FFFFFF" opacity=".22"/>
-          <g stroke="#2E3742" stroke-opacity=".45" stroke-width="2"><path d="M70 118 H250"/><path d="M70 300 H250"/></g>
-          <svg x="118" y="132" width="84" height="110" viewBox="0 0 100 130" style="--hop-fill:transparent;--hop-stroke:#C6E35A;--hop-leaf:#C6E35A" class="st-tank__hop"><use href="#hop"/></svg>
-          <rect x="128" y="258" width="64" height="22" rx="4" fill="#0B2545"/>
-          <text x="160" y="273" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#C6E35A">#BA-001</text>
-          <path class="st-vine" id="st-vine" d="M34 466 C58 400 22 352 70 316 C112 286 54 236 92 196 C130 158 262 168 246 118 C232 72 168 56 138 26" fill="none" stroke="#4CAF50" stroke-width="5" stroke-linecap="round"/>
-          <g class="st-vinehops">
-            <svg x="34" y="330" width="26" height="34" viewBox="0 0 100 130"><use href="#hop"/></svg>
-            <svg x="74" y="214" width="22" height="29" viewBox="0 0 100 130"><use href="#hop"/></svg>
-            <svg x="236" y="128" width="26" height="34" viewBox="0 0 100 130"><use href="#hop"/></svg>
-            <svg x="126" y="22" width="22" height="29" viewBox="0 0 100 130"><use href="#hop"/></svg>
-          </g>
-        </svg>
+        <figure class="st-scenecard st-scenecard--fade" id="st-tank">
+          <img src="public/art/23-szene-gaertank.webp" alt="Hopfen prüft mit Klemmbrett den Edelstahl-Gärtank, Malz leuchtet mit der Taschenlampe, Hefe klettert am Rohr" loading="lazy">
+        </figure>
       </div>
     </section>
 
@@ -167,6 +156,8 @@
     <section class="st st-scene" data-ch="Ziele" data-bg="#FFB547" data-fg="#FAF7F0" id="ziele">
       <div class="st-sticky">
         <div class="st-goals-grid st-wrap">
+          <div class="st-glasswrap">
+          <img class="st-char st-glass__char" src="public/art/40-hefe-sitzt.webp" alt="Hefe-Figur sitzt auf dem Glasrand" loading="lazy">
           <svg class="st-glass" viewBox="0 0 200 320" role="img" aria-label="Bierglas, das sich bis zu den Kampagnenzielen füllt">
             <defs><clipPath id="st-glassclip"><path d="M30 20 L170 20 L152 300 Q150 312 138 312 L62 312 Q50 312 48 300 Z"/></clipPath></defs>
             <g clip-path="url(#st-glassclip)">
@@ -182,6 +173,7 @@
               <line x1="170" y1="30" x2="186" y2="30" stroke="#FAF7F0" stroke-width="2"/><text x="188" y="33">100k</text>
             </g>
           </svg>
+          </div>
           <div>
             <p class="st-kicker">Crowdfunding · ab 2. Februar 2027</p>
             <h2>Je voller das Glas, desto mehr Sorten.</h2>
@@ -207,35 +199,35 @@
         <div class="st-track" id="st-track">
           <article class="st-beer">
             <div class="st-can" style="--c:#FF8C2B">
-              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="06-sorte-1" data-optional hidden alt="Etikett-Artwork Citra Comet"></div>
+              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="30-hopfen-skater" data-optional hidden alt="Etikett-Artwork Citra Comet"></div>
               <div class="st-label"><code>#BA-001</code><strong>Citra Comet</strong><code>West Coast IPA · 6,2 %</code></div>
             </div>
             <p class="st-when">ab 10.000 €</p><p>Grapefruit, Zitrus, knackig bitter.</p>
           </article>
           <article class="st-beer">
             <div class="st-can" style="--c:#FFB547">
-              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="07-sorte-2" data-optional hidden alt="Etikett-Artwork Mango Mood"></div>
+              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="31-hefe-sommer" data-optional hidden alt="Etikett-Artwork Mango Mood"></div>
               <div class="st-label"><code>#BA-002</code><strong>Mango Mood</strong><code>Hazy Pale Ale · 5,2 %</code></div>
             </div>
             <p class="st-when">ab 50.000 €</p><p>Mango, Maracuja, weich.</p>
           </article>
           <article class="st-beer">
             <div class="st-can" style="--c:#EDE4D3">
-              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="08-sorte-3" data-optional hidden alt="Etikett-Artwork Mighty Malt"></div>
+              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="32-malz-hantel" data-optional hidden alt="Etikett-Artwork Mighty Malt"></div>
               <div class="st-label"><code>#BA-003</code><strong>Mighty Malt</strong><code>Amber Ale · 5,6 %</code></div>
             </div>
             <p class="st-when">Voting ab 100.000 €</p><p>Karamell, Brotkruste, Hopfenwürze.</p>
           </article>
           <article class="st-beer">
             <div class="st-can" style="--c:#C6E35A">
-              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="08-sorte-4" data-optional hidden alt="Etikett-Artwork Yummy Yuzu"></div>
+              <div class="st-art"><svg viewBox="0 0 100 130" style="" aria-hidden="true"><use href="#hop"/></svg><img data-art="30-hopfen-sommer" data-optional hidden alt="Etikett-Artwork Yummy Yuzu"></div>
               <div class="st-label"><code>#BA-004</code><strong>Yummy Yuzu</strong><code>Session IPA · 4,0 %</code></div>
             </div>
             <p class="st-when">Voting ab 100.000 €</p><p>Yuzu, Limette, sehr frisch.</p>
           </article>
           <article class="st-beer">
             <div class="st-can" style="--c:#0B2545">
-              <div class="st-art"><svg viewBox="0 0 100 130" style="--hop-fill:#FF8C2B;--hop-stroke:#FAF7F0;--hop-leaf:#C6E35A" aria-hidden="true"><use href="#hop"/></svg><img data-art="08-sorte-5" data-optional hidden alt="Etikett-Artwork Midnight Hop"></div>
+              <div class="st-art"><svg viewBox="0 0 100 130" style="--hop-fill:#FF8C2B;--hop-stroke:#FAF7F0;--hop-leaf:#C6E35A" aria-hidden="true"><use href="#hop"/></svg><img data-art="30-hopfen-hoodie" data-optional hidden alt="Etikett-Artwork Midnight Hop"></div>
               <div class="st-label"><code>#BA-005</code><strong>Midnight Hop</strong><code>Black IPA · 6,8 %</code></div>
             </div>
             <p class="st-when">Voting ab 100.000 €</p><p>Röstaromen, Kiefer, Kaffee.</p>
@@ -359,7 +351,7 @@
     <section class="section section--green" id="team">
       <div class="team">
         <figure class="team__art">
-          <img data-art="10-team" src="public/img/placeholder-team.svg" alt="Illustration der drei Gründer beim Anstoßen im Sudhaus" loading="lazy">
+          <img src="public/art/22-szene-anstossen.webp" alt="Hopfen, Malz und Hefe stoßen mit Bier und Brezeln an" loading="lazy">
         </figure>
         <div>
           <p class="eyebrow eyebrow--light">Wer wir sind</p>
@@ -401,7 +393,7 @@
           </ul>
           <a class="btn btn--orange" href="#launch">Partner werden</a>
         </div>
-        <img class="b2b__art" data-art="12-brauerei" src="public/img/placeholder-brewery.svg" alt="Illustration eines Sudhauses mit Hopfenranken" loading="lazy">
+        <img class="b2b__art" src="public/art/21-szene-sudkessel.webp" alt="Hopfen rührt im Kupferkessel, Hefe wirft Zutaten hinein" loading="lazy">
       </div>
     </section>
 
@@ -422,7 +414,7 @@
     <!-- LAUNCH -->
     <section class="launch" id="launch">
       <div class="st-layer st-bubbles" id="st-bubbles" aria-hidden="true"></div>
-      <svg class="launch__hop" aria-hidden="true"><use href="#hop"/></svg>
+      <div class="launch__trio"><img class="st-char " src="public/art/40-hopfen-daumen.webp" alt="Hopfen-Figur" loading="lazy"><img class="st-char " src="public/art/40-hefe-skeptisch.webp" alt="Hefe-Figur zeigt nach oben" loading="lazy"><img class="st-char " src="public/art/40-malz-jubelt.webp" alt="Malz-Figur jubelt" loading="lazy"></div>
       <h2>Hol dir dein Bier, bevor es existiert.</h2>
       <p>Trag dich ein, dann melden wir uns zum Start. Early Birds bekommen 4 Dosen Citra Comet für 25 €.</p>
       <div class="count" id="count" aria-label="Countdown bis zum Kampagnenstart"></div>
