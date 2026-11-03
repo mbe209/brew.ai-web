@@ -1,5 +1,6 @@
 (() => {
   const cfg = window.BREW_CONFIG || {};
+  const T = window.BREW_T || ((k, de) => de);
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
@@ -22,7 +23,7 @@
   }
 
   // Artworks: generierte Bilder aus public/art/ einsetzen, sonst Platzhalter behalten
-  // (Liste in public/art/manifest.json, wird von scripts/generate-artworks.mjs gepflegt)
+  // (Liste in public/art/manifest.json)
   fetch("public/art/manifest.json")
     .then((r) => (r.ok ? r.json() : {}))
     .then((files) => {
@@ -39,8 +40,8 @@
   const count = $("#count");
   function tick() {
     let d = Math.max(0, launch - Date.now());
-    if (!d && cfg.campaignUrl) { count.innerHTML = "<div><b>Live!</b><small>Jetzt unterstützen</small></div>"; return; }
-    count.innerHTML = [["Tage", 864e5], ["Std", 36e5], ["Min", 6e4], ["Sek", 1e3]].map(([l, ms]) => {
+    if (!d && cfg.campaignUrl) { count.innerHTML = `<div><b>${T("count.live", "Live!")}</b><small>${T("count.now", "Jetzt unterstützen")}</small></div>`; return; }
+    count.innerHTML = [[T("count.d", "Tage"), 864e5], [T("count.h", "Std"), 36e5], [T("count.m", "Min"), 6e4], [T("count.s", "Sek"), 1e3]].map(([l, ms]) => {
       const n = Math.floor(d / ms); d -= n * ms;
       return `<div><b>${String(n).padStart(2, "0")}</b><small>${l}</small></div>`;
     }).join("");
@@ -54,7 +55,7 @@
     const msg = $("#signup-msg");
     const email = e.target.email.value;
     if (!cfg.signupEndpoint) {
-      msg.textContent = "Danke! Die Anmeldung wird gerade eingerichtet, schau bald wieder vorbei.";
+      msg.textContent = T("signup.pending", "Danke! Die Anmeldung wird gerade eingerichtet, schau bald wieder vorbei.");
       return;
     }
     try {
@@ -64,18 +65,18 @@
         body: JSON.stringify({ email })
       });
       if (!res.ok) throw new Error(res.status);
-      msg.textContent = "Prost! Wir melden uns zum Start.";
+      msg.textContent = T("signup.ok", "Prost! Wir melden uns zum Start.");
       e.target.reset();
     } catch {
-      msg.textContent = "Das hat nicht geklappt. Bitte versuch es später noch einmal.";
+      msg.textContent = T("signup.err", "Das hat nicht geklappt. Bitte versuch es später noch einmal.");
     }
   });
 
   // ---------- Flavor Engine Demo (regelbasiert, nur zur Veranschaulichung) ----------
   const form = $("#engine-form");
   const AXES = [
-    ["bitter", "Bitter"], ["fruit", "Frucht"], ["malt", "Malz"],
-    ["body", "Körper"], ["sour", "Säure"], ["strength", "Stärke"]
+    ["bitter", T("axis.bitter", "Bitter")], ["fruit", T("axis.fruit", "Frucht")], ["malt", T("axis.malt", "Malz")],
+    ["body", T("axis.body", "Körper")], ["sour", T("axis.sour", "Säure")], ["strength", T("axis.strength", "Stärke")]
   ];
 
   const HOPS = {
@@ -87,11 +88,11 @@
     kraeuter: ["Hallertauer Mittelfrüh", "Saazer"]
   };
   const EXTRAS = {
-    zitrus: "Orangenzeste",
-    beere: "Himbeerpüree",
-    steinobst: "Pfirsich",
-    kaffee: "Cold-Brew-Kaffee",
-    karamell: "Bourbon-Vanille"
+    zitrus: T("extra.zitrus", "Orangenzeste"),
+    beere: T("extra.beere", "Himbeerpüree"),
+    steinobst: T("extra.steinobst", "Pfirsich"),
+    kaffee: T("extra.kaffee", "Cold-Brew-Kaffee"),
+    karamell: T("extra.karamell", "Bourbon-Vanille")
   };
 
   function pickStyle(v, a) {
@@ -107,19 +108,19 @@
   }
 
   function pickYeast(style) {
-    if (/Sour|Weisse/.test(style)) return "Lactobacillus + Kveik";
-    if (/Hazy/.test(style)) return "London Ale III (fruchtig, trüb)";
-    if (/Stout|Porter|Barley/.test(style)) return "English Ale, hoch vergärend";
-    if (/Pils|Helles/.test(style)) return "Untergärige Lagerhefe";
-    return "American Ale (neutral, klar)";
+    if (/Sour|Weisse/.test(style)) return T("yeast.sour", "Lactobacillus + Kveik");
+    if (/Hazy/.test(style)) return T("yeast.hazy", "London Ale III (fruchtig, trüb)");
+    if (/Stout|Porter|Barley/.test(style)) return T("yeast.dark", "English Ale, hoch vergärend");
+    if (/Pils|Helles/.test(style)) return T("yeast.lager", "Untergärige Lagerhefe");
+    return T("yeast.default", "American Ale (neutral, klar)");
   }
 
   function pickMalts(v, a, style) {
-    const m = [/Pils|Helles/.test(style) ? "Pilsner Malz" : "Pale Ale Malz"];
-    if (/Hazy/.test(style) || v.body >= 7) m.push("Haferflocken", "Weizenmalz");
-    if (v.malt >= 4) m.push("Münchner Malz");
-    if (a.has("karamell") || (v.malt >= 5 && !/Stout|Porter/.test(style))) m.push("Karamellmalz");
-    if (/Stout|Porter/.test(style)) m.push("Schokoladenmalz", "Röstgerste");
+    const m = [/Pils|Helles/.test(style) ? T("malt.pils", "Pilsner Malz") : T("malt.pale", "Pale Ale Malz")];
+    if (/Hazy/.test(style) || v.body >= 7) m.push(T("malt.oats", "Haferflocken"), T("malt.wheat", "Weizenmalz"));
+    if (v.malt >= 4) m.push(T("malt.munich", "Münchner Malz"));
+    if (a.has("karamell") || (v.malt >= 5 && !/Stout|Porter/.test(style))) m.push(T("malt.crystal", "Karamellmalz"));
+    if (/Stout|Porter/.test(style)) m.push(T("malt.choc", "Schokoladenmalz"), T("malt.roast", "Röstgerste"));
     return [...new Set(m)];
   }
 
@@ -127,7 +128,7 @@
     let h = [];
     a.forEach((k) => HOPS[k] && h.push(...HOPS[k]));
     if (!h.length) h = /Pils|Helles|Stout|Porter|Amber|Barley/.test(style) ? ["Hallertauer Tradition", "Perle"] : ["Cascade", "Citra"];
-    if (v.bitter >= 7) h.unshift("Magnum (Bittere)");
+    if (v.bitter >= 7) h.unshift(T("hop.bitter", "Magnum (Bittere)"));
     return [...new Set(h)].slice(0, 4);
   }
 
@@ -167,22 +168,22 @@
     });
     const a = new Set($$('input[name="aroma"]:checked', form).map((i) => i.value));
     const style = pickStyle(v, a);
-    const abv = (3.4 + v.strength * 0.72).toFixed(1).replace(".", ",");
+    const abv = (3.4 + v.strength * 0.72).toFixed(1).replace(".", window.BREW_LANG === "en" ? "." : ",");
     const ibu = Math.round(/Sour|Weisse/.test(style) ? 6 + v.bitter : 12 + v.bitter * 8.5);
     let ebc = 7 + v.malt * 4;
     if (/Stout|Porter/.test(style)) ebc = 70 + v.malt * 10;
     const extras = [...a].map((k) => EXTRAS[k]).filter(Boolean);
-    if (v.body >= 8 && /Hazy|Stout/.test(style)) extras.push("Laktose (Milchzucker)");
+    if (v.body >= 8 && /Hazy|Stout/.test(style)) extras.push(T("extra.lactose", "Laktose (Milchzucker)"));
 
     $("#r-style").textContent = style;
     $("#r-name").textContent = nameFor(v, a);
-    $("#r-abv").textContent = abv + " %";
+    $("#r-abv").textContent = abv + (window.BREW_LANG === "en" ? "%" : " %");
     $("#r-ibu").textContent = ibu;
     $("#r-ebc").textContent = ebc;
     $("#r-hops").textContent = pickHops(v, a, style).join(", ");
     $("#r-malts").textContent = pickMalts(v, a, style).join(", ");
     $("#r-yeast").textContent = pickYeast(style);
-    $("#r-extras").textContent = extras.length ? extras.join(", ") : "keine, pure Brauzutaten";
+    $("#r-extras").textContent = extras.length ? extras.join(", ") : T("extra.none", "keine, pure Brauzutaten");
     drawRadar(v);
   }
 

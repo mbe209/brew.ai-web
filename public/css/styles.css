@@ -290,3 +290,14 @@ body.in-story .nav__toggle { border-color: currentColor; color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Sprachumschalter DE/EN im Kopf */
+.nav nav { display: flex; align-items: center; gap: 1.2rem; }
+.lang { display: inline-flex; border: 1.5px solid currentColor; border-radius: var(--radius-pill); overflow: hidden; opacity: .9; }
+.lang a { padding: .3em .7em; font: 600 .8rem/1 var(--font-head); letter-spacing: .04em; text-decoration: none; color: inherit; }
+.lang a.on { background: var(--color-malt-orange); color: #1E1E24; }
+.lang a:not(.on):hover { background: rgba(127, 127, 127, .18); }
+@media (max-width: 860px) {
+  .nav nav { gap: .7rem; }
+  .lang { order: -1; }
+}
