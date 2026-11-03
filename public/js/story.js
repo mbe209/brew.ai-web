@@ -3,6 +3,7 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const cfg = window.BREW_CONFIG || {};
+  const T = window.BREW_T || ((k, de) => de);
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const root = document.documentElement;
@@ -24,6 +25,8 @@
     ["Yuzu", 88, 82, 2.6, 0.35, "#C6E35A"], ["Kaffee", 30, 4, 1.5, 0.8, "#FAF7F0"], ["Pfirsich", 52, 30, 1.4, 0.2, "#FFB547"]
   ];
   const wbox = $("#st-words");
+  const wordsEn = T("words", null);
+  if (wordsEn) words.forEach((w, i) => { w[0] = wordsEn[i]; });
   const wEls = words.map(([t, x, y, size, speed, c]) => {
     const e = document.createElement("span");
     e.className = "st-word"; e.textContent = t; e.setAttribute("aria-hidden", "true");
@@ -46,7 +49,7 @@
   // Echter Kampagnenstand als Schaumkrone (aus config.js)
   const raised = cfg.raised || 0;
   const live = raised > 0;
-  if (live) $("#st-raised").textContent = `Stand heute: ${raised.toLocaleString("de-DE")} €`;
+  if (live) $("#st-raised").textContent = window.BREW_LANG === "en" ? `${T("raised", "")}€${raised.toLocaleString("en-US")}` : `Stand heute: ${raised.toLocaleString("de-DE")} €`;
   // Glas: 10k bei 10 %, 50k bei 50 %, 100k bei 100 % der Füllhöhe
   const raisedLevel = clamp(raised / (cfg.goal || 100000));
 
